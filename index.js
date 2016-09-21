@@ -11,6 +11,20 @@ const robots = [
   { name: 'Ratchet', alliance: null }
 ];
 
+const sortedRobots = robots.map(function(robot){
+  if (knownDecepticons.includes(robot.name)) {
+    let deceptBot = Object.assign({}, robot, {
+      alliance: "decepticon"
+    })
+    return deceptBot
+  } else {
+    let autoBot = Object.assign({}, robot, {
+      alliance: "autobot"
+    })
+    return autoBot
+  }
+})
+
 const zebraStripes = [
   { width: 9.12, color: null },
   { width: 5.71, color: null },
@@ -21,3 +35,19 @@ const zebraStripes = [
   { width: 0.59, color: null },
   { width: 7.31, color: null },
 ];
+
+const coloredZebraStripes = zebraStripes.map(function(stripe, index){
+  if (index % 2 == 0) {
+    // even indexed stripes are to be 'black'
+    let blackStripe = Object.assign({}, stripe, {
+      color: "black"
+    })
+    return blackStripe
+  } else {
+    // otherwise (odd) stripes are to be 'white'
+    let whiteStripe = Object.assign({}, stripe, {
+      color: "white"
+    })
+    return whiteStripe
+  }
+})
